@@ -53,7 +53,7 @@ gsap.to('#ppHero', { yPercent: 18, ease: 'none', scrollTrigger: { trigger: '.pp_
 // horizontal gallery (desktop) / vertical stack (narrow screens)
 function buildGallery() {
   const pin = $('#ppPin');
-  if (innerWidth < 900) {
+  if (matchMedia('(max-width: 899px)').matches) {
     pin.classList.add('pp__stack'); pin.classList.remove('pp__pin');
     $('.pp__progress').remove(); $('.pp__hint').remove();
     gsap.utils.toArray('.pp__frame').forEach(f => gsap.fromTo(f, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: f, start: 'top 90%' } }));
