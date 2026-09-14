@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Boris K — 3D Artist & ArchViz</title>
+<meta name="description" content="Boris K — Senior 3D Artist & Architectural Visualization Specialist. Photorealistic interior, exterior and landscape renders, fluid & water simulation, real-time visualization in Unreal Engine 5.">
+<meta name="theme-color" content="#070708">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=8">
+</head>
+<body>
+
+<!-- SVG filters: liquid glass refraction (Chromium) -->
+<svg class="svg-defs" aria-hidden="true">
+  <defs>
+    <filter id="liquid-nav" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feImage id="liquid-nav-map" result="map" preserveAspectRatio="none"/>
+      <feDisplacementMap in="SourceGraphic" in2="map" scale="28" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="liquid-lens" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feImage id="liquid-lens-map" result="map" preserveAspectRatio="none"/>
+      <feDisplacementMap in="SourceGraphic" in2="map" scale="60" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="grain-f"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/></filter>
+  </defs>
+</svg>
+
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Custom cursor -->
+<div class="cursor" aria-hidden="true">
+  <div class="cursor__dot"></div>
+  <div class="cursor__lens"></div>
+  <span class="cursor__label"></span>
+</div>
+
+<!-- Preloader -->
+<div class="preloader">
+  <div class="preloader__inner">
+    <div class="preloader__logo">CRISPY<span>®</span></div>
+    <div class="preloader__bar"><i></i></div>
+    <div class="preloader__count"><span>0</span>%</div>
+  </div>
+</div>
+
+<!-- Nav -->
+<header class="nav">
+  <nav class="nav__pill glass glass--liquid" data-liquid="liquid-nav">
+    <a href="#top" class="nav__logo" data-magnetic>CRISPY<span>®</span></a>
+    <ul class="nav__links">
+      <li><a href="#fluid" data-magnetic>Fluid</a></li>
+      <li><a href="#work" data-magnetic>Work</a></li>
+      <li><a href="#lighting" data-magnetic>Lighting</a></li>
+      <li><a href="#services" data-magnetic>Services</a></li>
+      <li><a href="#about" data-magnetic>About</a></li>
+      <li><a href="#quote" data-magnetic>Estimate</a></li>
+    </ul>
+    <a href="#contact" class="btn btn--sm" data-magnetic><span>Hire me</span></a>
+    <button class="nav__burger" aria-label="Menu"><i></i><i></i></button>
+  </nav>
+</header>
+
+<div class="menu">
+  <div class="menu__bg"></div>
+  <ul class="menu__links">
+    <li><a href="#work"><em>01</em>Work</a></li>
+    <li><a href="#lighting"><em>02</em>Lighting</a></li>
+    <li><a href="#services"><em>03</em>Services</a></li>
+    <li><a href="#about"><em>04</em>About</a></li>
+    <li><a href="#experience"><em>05</em>Experience</a></li>
+    <li><a href="#quote"><em>06</em>Estimate</a></li>
+    <li><a href="#contact"><em>07</em>Contact</a></li>
+  </ul>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero__bg">
+    <img src="img/p3_001.webp" alt="" class="hero__img" fetchpriority="high">
+    <canvas class="hero__gl" aria-hidden="true"></canvas>
+    <div class="hero__veil"></div>
+  </div>
+
+  <div class="hero__content container">
+    <div class="hero__eyebrow" data-reveal>
+      <span class="chip glass"><i class="chip__dot"></i>Available now · 30+ hrs/week</span>
+      <span class="chip glass">✦ Upwork Rising Talent</span>
+    </div>
+    <h1 class="hero__title">
+      <span class="line"><span>Spaces that sell</span></span>
+      <span class="line"><span><em>before</em> they're built.</span></span>
+    </h1>
+    <div class="hero__bottom">
+      <p class="hero__sub" data-reveal>
+        Photorealistic architectural visualization, fluid &amp; water simulation and real-time scenes.
+        I turn blueprints and sketches into visuals that survive real client presentations.
+      </p>
+      <div class="hero__cta" data-reveal>
+        <a href="#work" class="btn btn--primary" data-magnetic><span>See the work</span><i>→</i></a>
+        <a href="#contact" class="btn btn--ghost" data-magnetic><span>Start a project</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true"><span></span></div>
+  <div class="hero__coords" aria-hidden="true">
+    <span>TBILISI, GE</span><span class="hero__time" id="localTime">--:--</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Interior Visualization</span><i>✦</i>
+    <span>Exterior &amp; Landscape</span><i>✦</i>
+    <span>Fluid &amp; Water Simulation</span><i>✦</i>
+    <span>Unreal Engine 5</span><i>✦</i>
+    <span>CAD to 3D</span><i>✦</i>
+    <span>Interior Visualization</span><i>✦</i>
+    <span>Exterior &amp; Landscape</span><i>✦</i>
+    <span>Fluid &amp; Water Simulation</span><i>✦</i>
+    <span>Unreal Engine 5</span><i>✦</i>
+    <span>CAD to 3D</span><i>✦</i>
+  </div>
+</div>
+
+
+<!-- FLUID -->
+<section class="fluid" id="fluid">
+  <div class="fluid__media" aria-hidden="true">
+    <video class="fluid__video" src="video/fluid.mp4" poster="video/fluid_poster.jpg" muted loop playsinline preload="metadata"></video>
+  </div>
+  <div class="container fluid__content">
+    <span class="fluid__eyebrow" data-reveal>Fluid &amp; water simulation</span>
+    <h2 class="fluid__title">
+      <span class="line"><span>Real water.</span></span>
+      <span class="line"><span><em>Simulated.</em></span></span>
+    </h2>
+    <p class="fluid__text" data-reveal>
+      FLIP-based fluid in LiquiGen, volumetric spray and mist in EmberGen — rendered in Cycles or played back
+      in real time in Unreal Engine 5. Jets, sheets, cascades, splashes: the part of a fountain project nobody else can show.
+    </p>
+    <ul class="fluid__facts" data-reveal>
+      <li><b>FLIP</b><span>particle solver</span></li>
+      <li><b>60 fps</b><span>real-time playback</span></li>
+      <li><b>4K</b><span>final renders</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="works" id="work">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-head__num">01</span>
+      <h2 class="section-head__title" data-split>Selected <em>work</em></h2>
+      <p class="section-head__hint">Move your cursor across a card to browse every angle · click to open the project</p>
+    </div>
+    <div class="works__grid" id="worksGrid"></div>
+  </div>
+</section>
+
+<!-- DAY / NIGHT COMPARE -->
+<section class="compare" id="lighting">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-head__num">02</span>
+      <h2 class="section-head__title" data-split>One scene. <em>Two moods.</em></h2>
+      <p class="section-head__hint">Drag the handle — every project ships with lighting scenarios on request</p>
+    </div>
+  </div>
+  <div class="compare__stage container">
+    <div class="compare__box glass-frame" id="compareBox">
+      <img class="compare__img compare__img--day" src="img/p20_002.webp" alt="Daylight">
+      <div class="compare__night" id="compareNight">
+        <img class="compare__img" src="img/p20_003.webp" alt="Night">
+      </div>
+      <div class="compare__handle" id="compareHandle">
+        <div class="compare__knob glass"><i></i><i></i></div>
+      </div>
+      <span class="compare__tag compare__tag--l">☀ Day</span>
+      <span class="compare__tag compare__tag--r">☾ Night</span>
+    </div>
+    <div class="compare__switch" id="lightSwitch"></div>
+  </div>
+</section>
+
+
+<!-- PROCESS: blueprint → render -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-head__num">03</span>
+      <h2 class="section-head__title" data-split>Blueprint to <em>render</em></h2>
+      <p class="section-head__hint">What I get from clients — and what they get back: simulation, drawings, catalogue-accurate parts</p>
+    </div>
+
+    <div class="process__grid">
+      <div class="process__main">
+        <div class="compare__box glass-frame" data-compare data-before="img/p17_001.webp" data-after="img/p17_002.webp">
+          <img class="compare__img compare__img--day" src="img/p17_001.webp" alt="Hydraulic schematic">
+          <div class="compare__night"><img class="compare__img" src="img/p17_002.webp" alt="Fluid simulation"></div>
+          <div class="compare__handle"><div class="compare__knob glass"><i></i><i></i></div></div>
+          <span class="compare__tag compare__tag--l">Hydraulic schematic</span>
+          <span class="compare__tag compare__tag--r">Fluid simulation</span>
+        </div>
+        <p class="process__caption">An eight-tier cascade: the engineer's water-volume schematic on the left, the LiquiGen simulation of the same basin on the right. Same camera, same geometry — the water is the only thing that changed.</p>
+      </div>
+
+      <div class="process__steps" id="blueprintSteps"></div>
+    </div>
+
+    <div class="process__clay" data-reveal>
+      <div class="nozzle glass-frame" id="nozzleCard">
+        <video class="nozzle__video" src="video/nozzle.mp4" poster="video/nozzle_poster.jpg" muted loop playsinline preload="metadata"></video>
+        <div class="clay__labels"><span>Lily nozzle · turntable</span><span>Modelled to drawing</span></div>
+      </div>
+      <div class="process__claytext">
+        <h3>Hard-surface to the millimetre</h3>
+        <p>Nozzles, frames, basins, pump housings — modelled from fabrication drawings with clean topology and real dimensions. The same file goes to the workshop, the catalogue render and the UE5 scene.</p>
+        <ul class="service__tags"><li>CAD-accurate</li><li>Clean topology</li><li>Workshop-ready</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-head__num">04</span>
+      <h2 class="section-head__title" data-split>What I <em>do</em></h2>
+    </div>
+    <div class="services__list">
+      <article class="service glass" data-reveal>
+        <span class="service__num">01</span>
+        <h3>Architectural Renders</h3>
+        <p>Photorealistic interior, exterior and landscape visualization. Accurate materials, physically correct light, styled to the last cushion — built for approvals and marketing.</p>
+        <ul class="service__tags"><li>Interior</li><li>Exterior</li><li>Landscape</li></ul>
+      </article>
+      <article class="service glass" data-reveal>
+        <span class="service__num">02</span>
+        <h3>Fluid &amp; Water Simulation</h3>
+        <p>Fountains, splashes, water features and atmospheric effects. Real fluid dynamics rendered cinematically — a niche most archviz studios can't offer in-house.</p>
+        <ul class="service__tags"><li>LiquiGen</li><li>EmberGen</li><li>Fountains</li></ul>
+      </article>
+      <article class="service glass" data-reveal>
+        <span class="service__num">03</span>
+        <h3>Technical 3D Modeling</h3>
+        <p>Precise models from CAD drawings, blueprints and hand sketches. Clean geometry, tidy scene structure, production-ready and artist-editable Blender files.</p>
+        <ul class="service__tags"><li>CAD to 3D</li><li>Clean topology</li></ul>
+      </article>
+      <article class="service glass" data-reveal>
+        <span class="service__num">04</span>
+        <h3>Real-time Visualization</h3>
+        <p>Interactive walkthroughs and live presentations in Unreal Engine 5 — let the client explore the space, not just look at it.</p>
+        <ul class="service__tags"><li>Unreal Engine 5</li><li>Interactive</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / STATS -->
+<section class="about" id="about">
+  <div class="container about__grid">
+    <div class="about__text">
+      <span class="section-head__num">05</span>
+      <h2 class="section-head__title" data-split>Hi, I'm <em>Boris</em></h2>
+      <p data-reveal>
+        Senior 3D Artist and Architectural Visualization Specialist with 5+ years of experience.
+        I translate blueprints, technical drawings and hand-drawn sketches into accurate, presentation-ready 3D visuals —
+        plus a rarer skill: photorealistic fluid and water simulation for fountains and atmospheric effects.
+      </p>
+      <p data-reveal>
+        My Software Engineering background shapes every project: pipeline efficiency, clean geometry, well-organized scenes.
+        Whether you need a final render or a fully editable Blender file, I build with the next stage of the workflow in mind.
+        I work with architects, interior designers, hospitality brands and studios.
+      </p>
+      <div class="about__tools" data-reveal>
+        <span class="chip glass">Blender · Cycles</span><span class="chip glass">Unreal Engine 5</span><span class="chip glass">Lumen · Nanite</span>
+        <span class="chip glass">LiquiGen</span><span class="chip glass">EmberGen</span><span class="chip glass">PBR · Shaders</span>
+        <span class="chip glass">VR walkthroughs</span><span class="chip glass">CAD → 3D</span>
+      </div>
+    </div>
+    <div class="about__stats">
+      <div class="stat glass" data-reveal><b data-count="5" data-suffix="+">0</b><span>Years in 3D</span></div>
+      <div class="stat glass" data-reveal><b data-count="3" data-suffix="">0</b><span>Long-term studio contracts</span></div>
+      <div class="stat glass" data-reveal><b data-count="60" data-suffix="+">0</b><span>FPS real-time / VR in UE5</span></div>
+      <div class="stat glass" data-reveal><b data-count="25" data-suffix="%">0</b><span>Faster fluid-sim pipeline</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="exp" id="experience">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-head__num">06</span>
+      <h2 class="section-head__title" data-split>Where I've <em>worked</em></h2>
+      <p class="section-head__hint">Long-term studio contracts — fountains, interiors, real-time worlds</p>
+    </div>
+    <div class="exp__list">
+      <article class="exp__item" data-reveal>
+        <div class="exp__when"><b>2025 — now</b><span>Aquabrand CO</span></div>
+        <div class="exp__body glass">
+          <h3>3D Environmental Artist / Architectural Visualizer</h3>
+          <ul>
+            <li>Expansive UE5 exterior worlds with large-scale fountain complexes — terrain, foliage, modular architecture kits.</li>
+            <li>Interactive VR experiences (PCVR / standalone) so stakeholders preview fountain shows first-person before ground-breaking.</li>
+            <li>Fluid simulation for fountain shows in LiquiGen &amp; EmberGen — photoreal water, splashes and foam in real-time playback.</li>
+            <li>Blender marketing renders: day / night, dynamic weather, volumetric fog — plus UE5 experiences at stable 60+ FPS.</li>
+          </ul>
+          <div class="exp__tags"><span>Unreal Engine 5</span><span>VR</span><span>LiquiGen</span><span>EmberGen</span></div>
+        </div>
+      </article>
+      <article class="exp__item" data-reveal>
+        <div class="exp__when"><b>2023 — 2026</b><span>Trofim Titarenko Workshop</span></div>
+        <div class="exp__body glass">
+          <h3>3D Environmental Artist / Architectural Visualizer</h3>
+          <ul>
+            <li>Engineering blueprints, site plans and hydraulic schematics → photorealistic exteriors, side by side with landscape architects and fountain designers.</li>
+            <li>Millimeter-accurate fountain components: basins, nozzles, lighting, pump housings, sculptures, hardscape.</li>
+            <li>Stills and cinematic flythroughs across sunrise, midday, twilight and illuminated night scenes.</li>
+            <li>Cascading falls, high-velocity jets, mist and foam in LiquiGen; render time cut by 25% via smarter caching.</li>
+          </ul>
+          <div class="exp__tags"><span>Blender · Cycles</span><span>Fluid sim</span><span>Hydraulic previs</span></div>
+        </div>
+      </article>
+      <article class="exp__item" data-reveal>
+        <div class="exp__when"><b>2022 — 2026</b><span>Modern Home Design</span></div>
+        <div class="exp__body glass">
+          <h3>3D Environmental Artist / Architectural Visualizer</h3>
+          <ul>
+            <li>Interior concepts and finish materials aligned with blueprints and layout specs, together with interior designers.</li>
+            <li>High-poly furniture, upholstery and custom millwork modeled from technical drawings in Blender.</li>
+            <li>Photorealistic stills and walkthrough animations for presentations and marketing collateral.</li>
+            <li>Real-time UE5 environments (Lumen &amp; Nanite) that cut client revision cycles by ~20%.</li>
+          </ul>
+          <div class="exp__tags"><span>Interior</span><span>Furniture</span><span>UE5 Lumen · Nanite</span></div>
+        </div>
+      </article>
+    </div>
+    <div class="exp__badges" data-reveal>
+      <span class="chip glass">✦ Rising Talent</span>
+      <span class="chip glass">ID verified</span>
+      <span class="chip glass">English · Russian</span>
+      <span class="chip glass">Open to contract-to-hire</span>
+      <span class="chip glass">Kazan Federal University · IT &amp; Intelligent Systems</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- QUOTE -->
+<section class="quote" id="quote">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-head__num">07</span>
+      <h2 class="section-head__title" data-split>Instant <em>estimate</em></h2>
+      <p class="section-head__hint">Ballpark in 20 seconds — the real quote follows within a day</p>
+    </div>
+
+    <div class="quote__panel glass" id="quotePanel">
+      <div class="quote__form">
+        <div class="quote__row">
+          <label class="quote__label">What do you need?</label>
+          <div class="seg" id="qType"></div>
+        </div>
+        <div class="quote__row quote__row--views">
+          <label class="quote__label">Number of views <output id="qViewsOut">4</output></label>
+          <input type="range" id="qViews" min="1" max="12" value="4" class="range">
+          <div class="range__ticks"><span>1</span><span>12</span></div>
+        </div>
+        <div class="quote__row">
+          <label class="quote__label">Lighting scenarios <output id="qLightOut">1</output></label>
+          <input type="range" id="qLight" min="1" max="3" value="1" class="range">
+          <div class="range__ticks"><span>Day only</span><span>Day · dusk · night</span></div>
+        </div>
+        <div class="quote__row">
+          <label class="quote__label">Resolution</label>
+          <div class="seg" id="qRes"><button data-v="2K" class="is-active">2K</button><button data-v="4K">4K</button></div>
+        </div>
+        <div class="quote__row quote__row--extras">
+          <label class="quote__label">Extras</label>
+          <label class="check"><input type="checkbox" id="qAnim"><i></i>10-second flythrough animation</label>
+          <label class="check"><input type="checkbox" id="qFile"><i></i>Fully editable Blender file</label>
+          <label class="check"><input type="checkbox" id="qRush"><i></i>Rush · 48-hour delivery</label>
+        </div>
+      </div>
+
+      <div class="quote__result">
+        <span class="quote__eyebrow">Estimated budget</span>
+        <div class="quote__price"><b id="qPrice">$0</b></div>
+        <span class="quote__range" id="qRange">—</span>
+        <p class="quote__note" id="qNote"></p>
+        <ul class="quote__summary" id="qSummary"></ul>
+        <div class="quote__actions">
+          <a href="#" id="qSend" class="btn btn--primary" data-magnetic><span>Send this brief</span><i>→</i></a>
+          <a href="https://t.me/tentenii" target="_blank" rel="noopener" id="qTg" class="btn btn--ghost" data-magnetic><span>Discuss in Telegram</span></a>
+        </div>
+        <span class="quote__disclaimer">Estimate only. Final price depends on scene complexity and revisions — confirmed before any work starts.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact__glow"></div>
+  <div class="container">
+    <p class="contact__eyebrow" data-reveal>Have a project in mind?</p>
+    <h2 class="contact__title">
+      <span class="line"><span>Let's build</span></span>
+      <span class="line"><span>your <em>space</em>.</span></span>
+    </h2>
+    <div class="contact__actions" data-reveal>
+      <a href="https://www.upwork.com/freelancers/crispy3d" target="_blank" rel="noopener" class="btn btn--primary btn--lg" data-magnetic><span>Hire on Upwork</span><i>↗</i></a>
+      <a href="mailto:wvreprod@gmail.com" class="btn btn--ghost btn--lg" data-magnetic><span>wvreprod@gmail.com</span></a>
+    </div>
+    <ul class="contact__links" data-reveal>
+      <li><a href="https://www.upwork.com/freelancers/crispy3d" target="_blank" rel="noopener">Upwork</a></li>
+      <li><a href="https://t.me/tentenii" target="_blank" rel="noopener">Telegram</a></li>
+      <li><a href="https://t.me/crispy3xd" target="_blank" rel="noopener">Telegram channel</a></li>
+      <li><a href="mailto:wvreprod@gmail.com">Email</a></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__row">
+    <span>© <span id="year"></span> Boris K · Crispy 3D</span>
+    <span>ArchViz · Fluid simulation · Real-time</span>
+    <a href="#top" class="footer__top" data-magnetic>Back to top ↑</a>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox__bg"></div>
+  <button class="lightbox__close glass" aria-label="Close">✕</button>
+  <button class="lightbox__arrow lightbox__arrow--prev glass" aria-label="Previous">←</button>
+  <button class="lightbox__arrow lightbox__arrow--next glass" aria-label="Next">→</button>
+  <figure class="lightbox__figure">
+    <img class="lightbox__img" src="" alt="">
+  </figure>
+  <div class="lightbox__meta glass">
+    <b class="lightbox__title"></b>
+    <span class="lightbox__count"></span>
+  </div>
+  <div class="lightbox__thumbs" id="lightboxThumbs"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/data.js?v=8"></script>
+<script src="js/common.js?v=8"></script>
+<script src="js/main.js?v=8"></script>
+</body>
+</html>

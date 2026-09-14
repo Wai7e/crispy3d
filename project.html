@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project — Boris K</title>
+<meta name="theme-color" content="#070708">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=8">
+</head>
+<body class="pp-body">
+
+<svg class="svg-defs" aria-hidden="true">
+  <defs>
+    <filter id="liquid-nav" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feImage id="liquid-nav-map" result="map" preserveAspectRatio="none"/>
+      <feDisplacementMap in="SourceGraphic" in2="map" scale="28" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="liquid-lens" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feImage id="liquid-lens-map" result="map" preserveAspectRatio="none"/>
+      <feDisplacementMap in="SourceGraphic" in2="map" scale="60" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="grain-f"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/></filter>
+  </defs>
+</svg>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__lens"></div><span class="cursor__label"></span></div>
+
+<header class="nav">
+  <nav class="nav__pill glass glass--liquid">
+    <a href="index.html" class="nav__logo" data-magnetic>CRISPY<span>®</span></a>
+    <ul class="nav__links">
+      <li><a href="index.html#work" data-magnetic>Work</a></li>
+      <li><a href="index.html#process" data-magnetic>Process</a></li>
+      <li><a href="index.html#quote" data-magnetic>Estimate</a></li>
+    </ul>
+    <a href="index.html#contact" class="btn btn--sm" data-magnetic><span>Hire me</span></a>
+    <button class="nav__burger" aria-label="Menu"><i></i><i></i></button>
+  </nav>
+</header>
+<div class="menu">
+  <div class="menu__bg"></div>
+  <ul class="menu__links">
+    <li><a href="index.html#work"><em>01</em>Work</a></li>
+    <li><a href="index.html#process"><em>02</em>Process</a></li>
+    <li><a href="index.html#quote"><em>03</em>Estimate</a></li>
+    <li><a href="index.html#contact"><em>04</em>Contact</a></li>
+  </ul>
+</div>
+
+<main class="pp" id="pp">
+  <section class="pp__hero">
+    <img id="ppHero" src="" alt="">
+    <div class="container">
+      <a href="index.html#work" class="pp__back" data-magnetic>← All work</a>
+      <div class="pp__tags" id="ppTags"></div>
+      <h1 class="pp__title"><span class="line"><span id="ppTitle"></span></span></h1>
+      <div class="pp__meta" id="ppMeta"></div>
+    </div>
+  </section>
+
+  <section class="pp__brief">
+    <div class="container">
+      <div class="pp__col" data-reveal>
+        <h2>Brief</h2>
+        <p id="ppBrief"></p>
+      </div>
+      <div class="pp__col" data-reveal>
+        <h2>Result</h2>
+        <p id="ppResult"></p>
+        <div class="pp__deliv" id="ppDeliv"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pp__gallery" id="ppGallery">
+    <div class="pp__pin" id="ppPin">
+      <div class="pp__track" id="ppTrack"></div>
+      <div class="pp__progress"><i id="ppProg"></i></div>
+      <div class="pp__hint">Scroll to browse · click to enlarge</div>
+    </div>
+  </section>
+
+  <section class="pp__next" id="ppNext">
+    <span>Next project</span>
+    <a href="#" id="ppNextLink"></a>
+    <div class="pp__nextimg"><img id="ppNextImg" src="" alt=""></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__row">
+    <span>© <span id="year"></span> Boris K · Crispy 3D</span>
+    <span>ArchViz · Fluid simulation · Real-time</span>
+    <a href="index.html" class="footer__top" data-magnetic>Back home ↑</a>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox__bg"></div>
+  <button class="lightbox__close glass" aria-label="Close">✕</button>
+  <button class="lightbox__arrow lightbox__arrow--prev glass" aria-label="Previous">←</button>
+  <button class="lightbox__arrow lightbox__arrow--next glass" aria-label="Next">→</button>
+  <figure class="lightbox__figure"><img class="lightbox__img" src="" alt=""></figure>
+  <div class="lightbox__meta glass"><b class="lightbox__title"></b><span class="lightbox__count"></span></div>
+  <div class="lightbox__thumbs" id="lightboxThumbs"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="js/data.js?v=8"></script>
+<script src="js/common.js?v=8"></script>
+<script src="js/project.js?v=8"></script>
+</body>
+</html>
