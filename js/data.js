@@ -37,7 +37,19 @@ const PROJECTS = [
     deliverables: ['7 stills', 'Day + night', 'Cabinet detail'],
   },
   {
-    id: 'spa-lounge', title: 'Spa Lounge', tags: ['Interior', 'Wellness'], size: 'half',
+    id: 'lily-nozzle', title: 'Lily Nozzle — Product Film', tags: ['Product animation', 'Hard-surface'], size: 'wide',
+    images: ['p30_001', 'p30_002', 'p30_003', 'p30_004', 'p30_005', 'p30_006'],
+    videos: [
+      { src: 'video/lily_promo.mp4', poster: 'video/lily_promo_poster.jpg', label: 'Product film · 37 s' },
+      { src: 'video/nozzle.mp4', poster: 'video/nozzle_poster.jpg', label: 'Turntable' },
+    ],
+    year: '2026', client: 'Fountain manufacturer', tools: ['Blender · Cycles', 'CAD drawings', 'Camera animation'],
+    brief: 'A launch film for the Lily multi-jet nozzle: the manufacturer needed a catalogue-grade product video of a part that exists only as a fabrication drawing.',
+    result: 'Millimetre-accurate model from the CAD sheet, studio lighting rig, macro passes on the threads and a slow exploded-view of the nozzle stack — 37 seconds, rendered in Cycles.',
+    deliverables: ['37 s film · 1080p', 'Exploded-view sequence', 'Turntable loop', '6 stills'],
+  },
+  {
+    id: 'spa-lounge', title: 'Spa Lounge', tags: ['Interior', 'Wellness'], size: 'narrow tall',
     images: ['p1_017', 'p1_016', 'p1_012', 'p1_014'],
     year: '2025', client: 'Interior design studio', tools: ['Blender · Cycles'],
     brief: 'Relaxation room of a private spa: heated benches, fluted wall, copper pendant, linen storage.',
@@ -61,20 +73,12 @@ const PROJECTS = [
     deliverables: ['4 stills', 'Tile layout variants'],
   },
   {
-    id: 'neon-katana', title: 'Neon Katana', tags: ['Hard-surface', 'Game art'], size: 'half',
+    id: 'neon-katana', title: 'Neon Katana', tags: ['Hard-surface', 'Game art'], size: 'wide',
     images: ['p28_001', 'p28_002', 'p28_003', 'p28_004', 'p28_005', 'p28_006', 'p28_007', 'p28_008', 'p28_009', 'p28_010'],
     year: '2025', client: 'Personal project', tools: ['Blender', 'PBR texturing', 'Unreal Engine 5'],
     brief: 'A cyberpunk katana with a segmented blade, emissive edge and skeletonised grip — modelled game-ready for real-time.',
     result: 'Clean quad topology, hard-surface bevels, PBR set with emissive mask; rendered in studio light and checked in UE5.',
     deliverables: ['9 stills · 4K', 'Topology view', 'Game-ready asset'],
-  },
-  {
-    id: 'aqua-mall', title: 'Aqua Mall Environment', tags: ['Exterior', 'Landscape'], size: 'wide',
-    images: ['p27_001', 'p27_002', 'p27_003', 'p27_004'],
-    year: '2026', client: 'Fountain manufacturer', tools: ['Blender · Cycles', 'LiquiGen'],
-    brief: 'A full shopping-mall forecourt as a catalogue environment: parking, terraces, topiary, a sculptural bench and a custom ring fountain by the entrance.',
-    result: 'Aerial and eye-level views by day, plus the ring fountain lit at dusk — the same environment now hosts the whole product catalogue.',
-    deliverables: ['4 stills · 4K', 'Reusable environment', 'Day + dusk'],
   },
   {
     id: 'frame-1800', title: 'Fountain Frame 1800', tags: ['Hard-surface', 'Technical'], size: 'narrow tall',
@@ -86,6 +90,14 @@ const PROJECTS = [
     deliverables: ['7 stills', 'Plan + elevation', 'Exploded view', 'Nozzle turntable'],
   },
   {
+    id: 'aqua-mall', title: 'Aqua Mall Environment', tags: ['Exterior', 'Landscape'], size: 'wide',
+    images: ['p27_001', 'p27_002', 'p27_003', 'p27_004'],
+    year: '2026', client: 'Fountain manufacturer', tools: ['Blender · Cycles', 'LiquiGen'],
+    brief: 'A full shopping-mall forecourt as a catalogue environment: parking, terraces, topiary, a sculptural bench and a custom ring fountain by the entrance.',
+    result: 'Aerial and eye-level views by day, plus the ring fountain lit at dusk — the same environment now hosts the whole product catalogue.',
+    deliverables: ['4 stills · 4K', 'Reusable environment', 'Day + dusk'],
+  },
+  {
     id: 'blossom-spheres', title: 'Blossom Spheres', tags: ['Fluid simulation', 'Day / Night'], size: 'narrow tall',
     images: ['p20_001', 'p20_002', 'p20_003', 'p20_004', 'p20_005', 'p20_006', 'p20_007'],
     year: '2026', client: 'Fountain manufacturer', tools: ['Blender · Cycles', 'LiquiGen'],
@@ -94,7 +106,7 @@ const PROJECTS = [
     deliverables: ['7 stills · 4K', 'Day + night matched camera', 'Lighting variants'],
   },
   {
-    id: 'heart-fountain', title: 'Heart Fountain', tags: ['Fluid simulation', 'Product'], size: 'wide',
+    id: 'heart-fountain', title: 'Heart Fountain', tags: ['Fluid simulation', 'Product'], size: 'half',
     images: ['p13_001', 'p13_002', 'p13_003', 'p13_004', 'p13_005', 'p13_006'],
     year: '2026', client: 'Fountain manufacturer', tools: ['Blender · Cycles', 'LiquiGen'],
     brief: 'Two steel arcs throwing crossing water sheets into a pebble basin — a catalogue piece for a fountain manufacturer.',
@@ -134,14 +146,6 @@ const PROJECTS = [
     deliverables: ['6 stills', 'Golden hour + dusk'],
   },
   {
-    id: 'lakeside-show', title: 'Lakeside Fountains', tags: ['Fluid simulation', 'Landscape'], size: 'half',
-    images: ['p24_001', 'p24_002', 'p24_003', 'p24_004'],
-    year: '2026', client: 'Resort developer', tools: ['Blender · Cycles', 'LiquiGen'],
-    brief: 'Coloured floating fountains on a village lake, seen from the shore path at dusk and at night.',
-    result: 'Four views with lit jets, spray and long reflections on still water; a wide dusk establishing shot for the masterplan deck.',
-    deliverables: ['4 stills', 'Dusk + night'],
-  },
-  {
     id: 'dancing-fountain', title: 'Dancing Fountain Show', tags: ['Fluid simulation', 'Night show'], size: 'half',
     images: ['p9_001', 'p9_002', 'p9_003', 'p9_004', 'p9_005'],
     year: '2025', client: 'Fountain manufacturer', tools: ['Blender · Cycles', 'LiquiGen', 'EmberGen'],
@@ -168,7 +172,7 @@ const PROCESS = {
     { img: 'p26_003', label: 'Elevation', note: 'Every strut and mount at drawing dimensions.' },
     { img: 'p26_001', label: 'Assembled', note: 'Frame, spheres and nozzles — ready for the workshop.' },
   ],
-  nozzle: { video: 'video/nozzle.mp4', poster: 'video/nozzle_poster.jpg' },
+  film: { video: 'video/lily_promo.mp4', poster: 'video/lily_promo_poster.jpg' },
 };
 
 /* ============================================================

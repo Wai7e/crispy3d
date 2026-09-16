@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=9">
+<link rel="stylesheet" href="css/style.css?v=10">
 </head>
 <body>
 
@@ -215,15 +215,18 @@
       <div class="process__steps" id="blueprintSteps"></div>
     </div>
 
-    <div class="process__clay" data-reveal>
-      <div class="nozzle glass-frame" id="nozzleCard">
-        <video class="nozzle__video" src="video/nozzle.mp4" poster="video/nozzle_poster.jpg" muted loop playsinline preload="metadata"></video>
-        <div class="clay__labels"><span>Lily nozzle · turntable</span><span>Modelled to drawing</span></div>
+    <div class="process__feature" data-reveal>
+      <div class="film glass-frame" id="filmCard">
+        <video class="film__video" src="video/lily_promo.mp4" poster="video/lily_promo_poster.jpg" muted loop playsinline preload="metadata"></video>
+        <div class="film__bar"><i id="filmProg"></i></div>
+        <button class="film__sound chip glass" id="filmFs" type="button">Fullscreen ↗</button>
       </div>
-      <div class="process__claytext">
+      <div class="film__caption glass">
+        <span class="fluid__eyebrow">Product film · Lily nozzle</span>
         <h3>Hard-surface to the millimetre</h3>
-        <p>Nozzles, frames, basins, pump housings — modelled from fabrication drawings with clean topology and real dimensions. The same file goes to the workshop, the catalogue render and the UE5 scene.</p>
-        <ul class="service__tags"><li>CAD-accurate</li><li>Clean topology</li><li>Workshop-ready</li></ul>
+        <p>A multi-jet fountain nozzle that existed only as a fabrication drawing — modelled to spec, lit like a product shot and taken apart on camera. The same file goes to the workshop, the catalogue and the UE5 scene.</p>
+        <ul class="service__tags"><li>CAD-accurate</li><li>Exploded view</li><li>Studio lighting</li><li>37 s · Cycles</li></ul>
+        <a href="project.html?id=lily-nozzle" class="btn btn--ghost" data-magnetic><span>Open the case</span><i>→</i></a>
       </div>
     </div>
   </div>
@@ -461,8 +464,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="js/data.js?v=9"></script>
-<script src="js/common.js?v=9"></script>
-<script src="js/main.js?v=9"></script>
+<script src="js/data.js?v=10"></script>
+<script src="js/common.js?v=10"></script>
+<script src="js/main.js?v=11"></script>
 </body>
 </html>

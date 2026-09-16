@@ -167,7 +167,7 @@ function buildWorks() {
     el.href = `project.html?id=${p.id}`;
     el.className = 'work ' + p.size.split(' ').map(s => 'work--' + s).join(' ');
     el.dataset.cursor = 'view'; el.dataset.cursorLabel = 'Open';
-    const media = [...p.images.map(n => ({ img: n })), ...(p.videos || [])];
+    const media = [...(p.videos || []), ...p.images.map(n => ({ img: n }))];
     el.innerHTML = `
       <div class="work__media">
         ${media.map((x, i) => x.img
@@ -185,13 +185,15 @@ function buildWorks() {
       </div>
       <div class="work__glow"></div>`;
     grid.appendChild(el);
+    const lead = $('.work__media video.is-on', el);
+    if (lead) new IntersectionObserver(es => es[0].isIntersecting ? lead.play().catch(() => {}) : lead.pause(), { rootMargin: '100px' }).observe(lead);
 
     const imgs = $$('.work__media img, .work__media video', el), dots = $$('.work__scrub i', el);
     let cur = 0;
     const show = i => {
       if (i === cur) return;
       imgs[cur].classList.remove('is-on'); dots[cur].classList.remove('is-on');
-      if (imgs[cur].tagName === 'VIDEO') imgs[cur].pause();
+      if (imgs[cur].tagName === 'VIDEO' && cur !== 0) imgs[cur].pause();
       cur = i; imgs[cur].classList.add('is-on'); dots[cur].classList.add('is-on');
       if (imgs[cur].tagName === 'VIDEO') imgs[cur].play().catch(() => {});
     };
@@ -273,8 +275,13 @@ function initProcess() {
         <figcaption><em>0${i + 1}</em><b>${s.label}</b><span>${s.note}</span></figcaption>
       </figure>`).join('');
   }
-  const nz = $('.nozzle__video');
-  if (nz) new IntersectionObserver(es => es[0].isIntersecting ? nz.play().catch(() => {}) : nz.pause(), { rootMargin: '150px' }).observe(nz);
+  const film = $('.film__video');
+  if (film) {
+    new IntersectionObserver(es => es[0].isIntersecting ? film.play().catch(() => {}) : film.pause(), { rootMargin: '150px' }).observe(film);
+    film.addEventListener('timeupdate', () => { $('#filmProg').style.width = (film.currentTime / film.duration * 100 || 0) + '%'; });
+    $('#filmFs').addEventListener('click', () => { (film.requestFullscreen || film.webkitEnterFullscreen || (() => {})).call(film); });
+    $('#filmCard').addEventListener('click', e => { if (e.target.closest('button')) return; film.paused ? film.play() : film.pause(); });
+  }
 }
 
 /* ============================================================
