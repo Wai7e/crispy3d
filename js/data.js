@@ -91,11 +91,11 @@ const PROJECTS = [
   },
   {
     id: 'aqua-mall', title: 'Aqua Mall Environment', tags: ['Exterior', 'Landscape'], size: 'wide',
-    images: ['p27_001', 'p27_002', 'p27_003', 'p27_004'],
+    images: ['p27_005', 'p27_001', 'p27_002', 'p27_003', 'p27_004'],
     year: '2026', client: 'Fountain manufacturer', tools: ['Blender · Cycles', 'LiquiGen'],
     brief: 'A full shopping-mall forecourt as a catalogue environment: parking, terraces, topiary, a sculptural bench and a custom ring fountain by the entrance.',
     result: 'Aerial and eye-level views by day, plus the ring fountain lit at dusk — the same environment now hosts the whole product catalogue.',
-    deliverables: ['4 stills · 4K', 'Reusable environment', 'Day + dusk'],
+    deliverables: ['5 stills · 4K', 'Reusable environment', 'Day + dusk'],
   },
   {
     id: 'blossom-spheres', title: 'Blossom Spheres', tags: ['Fluid simulation', 'Day / Night'], size: 'narrow tall',
