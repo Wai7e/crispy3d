@@ -37,16 +37,12 @@ const PROJECTS = [
     deliverables: ['7 stills', 'Day + night', 'Cabinet detail'],
   },
   {
-    id: 'lily-nozzle', title: 'Lily Nozzle — Product Film', tags: ['Product animation', 'Hard-surface'], size: 'full',
-    images: ['p30_001', 'p30_002', 'p30_003', 'p30_004', 'p30_005', 'p30_006'],
-    videos: [
-      { src: 'video/lily_promo.mp4', poster: 'video/lily_promo_poster.jpg', label: 'Product film · 37 s' },
-      { src: 'video/nozzle.mp4', poster: 'video/nozzle_poster.jpg', label: 'Turntable' },
-    ],
-    year: '2026', client: 'Fountain manufacturer', tools: ['Blender · Cycles', 'CAD drawings', 'Camera animation'],
-    brief: 'A launch film for the Lily multi-jet nozzle: the manufacturer needed a catalogue-grade product video of a part that exists only as a fabrication drawing.',
-    result: 'Millimetre-accurate model from the CAD sheet, studio lighting rig, macro passes on the threads and a slow exploded-view of the nozzle stack — 37 seconds, rendered in Cycles.',
-    deliverables: ['37 s film · 1080p', 'Exploded-view sequence', 'Turntable loop', '6 stills'],
+    id: 'lunas-bedroom', title: 'Real-time Bedroom · UE5', tags: ['Real-time', 'Unreal Engine 5'], size: 'full',
+    images: ['p32_001', 'p32_002'],
+    year: '2026', client: 'Studio test assignment', tools: ['3ds Max', 'Datasmith', 'Unreal Engine 5.8', 'DLSS 5'],
+    brief: 'A master bedroom built as a real-time archviz scene: marble headboard wall, walnut joinery, a branching light installation — the kind of materials that usually need an offline renderer to hold up.',
+    result: 'Scene assembled in 3ds Max, moved into Unreal Engine 5.8 through Datasmith and lit with Lumen; geometry kept as Nanite meshes. These frames are captured from the running scene and upscaled with DLSS 5 — no render farm, and the same scene can be walked through live or in VR.',
+    deliverables: ['2 frames · DLSS 5 upscale', 'Interactive UE5 5.8 scene', 'Lumen + Nanite', 'Datasmith pipeline'],
   },
   {
     id: 'spa-lounge', title: 'Spa Lounge', tags: ['Interior', 'Wellness'], size: 'half',
@@ -63,6 +59,18 @@ const PROJECTS = [
     brief: 'Oak, micro-cement and plants — a bathroom that should feel like a ryokan.',
     result: 'Four views with soft diffused daylight and accurate oak grain from the supplier\'s samples.',
     deliverables: ['4 stills'],
+  },
+  {
+    id: 'lily-nozzle', title: 'Lily Nozzle — Product Film', tags: ['Product animation', 'Hard-surface'], size: 'full',
+    images: ['p30_001', 'p30_002', 'p30_003', 'p30_004', 'p30_005', 'p30_006'],
+    videos: [
+      { src: 'video/lily_promo.mp4', poster: 'video/lily_promo_poster.jpg', label: 'Product film · 37 s' },
+      { src: 'video/nozzle.mp4', poster: 'video/nozzle_poster.jpg', label: 'Turntable' },
+    ],
+    year: '2026', client: 'Fountain manufacturer', tools: ['Blender · Cycles', 'CAD drawings', 'Camera animation'],
+    brief: 'A launch film for the Lily multi-jet nozzle: the manufacturer needed a catalogue-grade product video of a part that exists only as a fabrication drawing.',
+    result: 'Millimetre-accurate model from the CAD sheet, studio lighting rig, macro passes on the threads and a slow exploded-view of the nozzle stack — 37 seconds, rendered in Cycles.',
+    deliverables: ['37 s film · 1080p', 'Exploded-view sequence', 'Turntable loop', '6 stills'],
   },
   {
     id: 'blush-bath', title: 'Blush Bathroom', tags: ['Interior', 'Bathroom'], size: 'half',
