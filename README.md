@@ -39,7 +39,8 @@ python -m http.server 8765 --directory site
 
 ## Добавить проект
 1. Сконвертировать рендеры в WebP (скрипт ниже) → `img/pN_001.webp`, `img/pN_001_t.webp` …
-2. Добавить объект в `PROJECTS` (`size`: `wide` 8/12, `narrow tall` 4/12, `half` 6/12).
+2. Добавить объект в `PROJECTS` (`size`: `full` 12/12, `wide` 8/12, `half` 6/12, `narrow tall` 4/12).
+   Сумма ширин в каждом ряду должна давать ровно 12, иначе ряд поедет. `narrow tall` нельзя ставить в ряд, где нет карточки с фиксированной пропорцией (`wide`/`half`/`full`) — высота схлопнется.
 
 ```python
 from PIL import Image; import os
