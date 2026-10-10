@@ -579,3 +579,9 @@ section{padding-block:clamp(90px,12vw,170px)}
 @media (max-width:900px){
   .film__caption{position:static;max-width:none;margin-top:14px}
 }
+
+/* film tabs */
+.film__tabs{position:absolute;left:18px;top:18px;z-index:2;display:flex;gap:8px;flex-wrap:wrap}
+.film__tabs .chip{cursor:pointer}
+.film__tabs .chip.is-active{background:rgba(226,195,155,.18);color:var(--accent)}
+@media (max-width:560px){ .film__sound{display:none} }

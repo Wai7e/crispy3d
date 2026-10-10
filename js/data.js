@@ -89,15 +89,16 @@ const PROJECTS = [
     deliverables: ['9 stills · 4K', 'Topology view', 'Game-ready asset'],
   },
   {
-    id: 'mechanical-timer', title: 'Mechanical Timer', tags: ['Hard-surface', 'Game-ready'], size: 'narrow tall',
-    images: ['p31_001', 'p31_002', 'p31_003', 'p31_004', 'p31_005', 'p31_006'],
-    year: '2026', client: 'Personal project', tools: ['Blender', 'Technical drawings'],
-    brief: 'A mechanical timer modelled straight from technical drawings — exact dimensions, a hinged cover that actually opens, and every part separable so the asset can be animated or taken apart.',
-    result: 'Fully functional mid-poly, game-ready model with clean all-quad topology: no triangles where they matter, even edge flow on the curved shell, bevels that hold up in real time. Clay passes and wireframe views included.',
-    deliverables: ['6 stills', 'Wireframe views', 'Separable parts', 'Game-ready mid-poly'],
+    id: 'mechanical-timer', title: 'TDM181 Timer — Product Film', tags: ['Product animation', 'Hard-surface'], size: 'full',
+    images: ['p33_001', 'p33_002', 'p33_003', 'p33_004', 'p33_005', 'p33_006', 'p33_007', 'p33_008', 'p33_009', 'p33_010', 'p33_011', 'p33_012', 'p33_013', 'p33_014', 'p31_005', 'p31_006'],
+    videos: [{ src: 'video/timer_promo.mp4', poster: 'video/timer_promo_poster.jpg', label: 'Product film · 38 s' }],
+    year: '2026', client: 'Personal project', tools: ['Blender · Cycles', 'Technical drawings'],
+    brief: 'A DIN-rail 24-hour mechanical timer — 16 A, 230 V — modelled straight from the manufacturer\'s drawings: exact dimensions, a hinged cover that opens, programming segments on the dial, every part separable.',
+    result: 'A 38-second product film built around the object: first light across the bezel, macro passes on the dial, the printed label and the wiring diagram, the cover opening, a day cycle from dawn to sunset, the click onto the DIN rail, and a hero payoff. Game-ready mid-poly underneath, clean all-quad topology.',
+    deliverables: ['38 s film · 1080p', '14 key frames · FHD', 'Wireframe views', 'Game-ready mid-poly'],
   },
   {
-    id: 'aqua-mall', title: 'Aqua Mall Environment', tags: ['Exterior', 'Landscape'], size: 'wide',
+    id: 'aqua-mall', title: 'Aqua Mall Environment', tags: ['Exterior', 'Landscape'], size: 'full',
     images: ['p27_005', 'p27_001', 'p27_002', 'p27_003', 'p27_004'],
     year: '2026', client: 'Fountain manufacturer', tools: ['Blender · Cycles', 'LiquiGen'],
     brief: 'A full shopping-mall forecourt as a catalogue environment: parking, terraces, topiary, a sculptural bench and a custom ring fountain by the entrance.',
@@ -180,7 +181,7 @@ const LIGHT_PAIRS = [
   { label: 'Twin pools', day: 'p11_001', night: 'p11_002' },
 ];
 
-/* Process section: aligned before / after + technical-modelling story */
+/* Process section: aligned before / after + product films */
 const PROCESS = {
   schematic: { before: 'p17_001', after: 'p17_002', beforeLabel: 'Hydraulic schematic', afterLabel: 'Fluid simulation' },
   steps: [
@@ -188,7 +189,22 @@ const PROCESS = {
     { img: 'p26_003', label: 'Elevation', note: 'Every strut and mount at drawing dimensions.' },
     { img: 'p26_001', label: 'Assembled', note: 'Frame, spheres and nozzles — ready for the workshop.' },
   ],
-  film: { video: 'video/lily_promo.mp4', poster: 'video/lily_promo_poster.jpg' },
+  films: [
+    {
+      id: 'mechanical-timer', tab: 'TDM181 Timer', eyebrow: 'Product film · DIN-rail timer',
+      video: 'video/timer_promo.mp4', poster: 'video/timer_promo_poster.jpg',
+      title: 'Every detail has to survive a macro lens',
+      text: 'A 24-hour timer modelled from the manufacturer\'s drawings — programming segments, printed label, wiring diagram, the cover on its hinge. 38 seconds of macro passes and a full day cycle, all from one game-ready mid-poly asset.',
+      tags: ['38 s · Cycles', 'Macro passes', 'CAD-accurate', 'Game-ready'],
+    },
+    {
+      id: 'lily-nozzle', tab: 'Lily Nozzle', eyebrow: 'Product film · Lily nozzle',
+      video: 'video/lily_promo.mp4', poster: 'video/lily_promo_poster.jpg',
+      title: 'Hard-surface to the millimetre',
+      text: 'A multi-jet fountain nozzle that existed only as a fabrication drawing — modelled to spec, lit like a product shot and taken apart on camera. The same file goes to the workshop, the catalogue and the UE5 scene.',
+      tags: ['37 s · Cycles', 'Exploded view', 'Studio lighting'],
+    },
+  ],
 };
 
 /* ============================================================

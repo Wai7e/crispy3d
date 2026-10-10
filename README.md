@@ -31,6 +31,7 @@ python -m http.server 8765 --directory site
 | Проекты: название, теги, картинки, brief/result, клиент, инструменты | `js/data.js` → `PROJECTS` |
 | Пары день/ночь для слайдера | `js/data.js` → `LIGHT_PAIRS` |
 | Секция Blueprint → Render | `js/data.js` → `PROCESS` + разметка в `index.html` |
+| Продуктовые фильмы (вкладки в секции процесса) | `js/data.js` → `PROCESS.films` — добавь объект, вкладка появится сама |
 | **Цены калькулятора** (сейчас — прикидка, поставь свои) | `js/data.js` → `PRICING` |
 | Hero-картинка | `js/common.js` → `HERO_IMG` + `<img class="hero__img">` в `index.html` |
 | Видео воды | `site/video/fluid.mp4` — любое видео на чёрном фоне, 1280px, h264 |

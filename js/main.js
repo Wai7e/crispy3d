@@ -275,11 +275,27 @@ function initProcess() {
         <figcaption><em>0${i + 1}</em><b>${s.label}</b><span>${s.note}</span></figcaption>
       </figure>`).join('');
   }
-  const film = $('.film__video');
-  if (film) {
+  const film = $('#filmVideo');
+  if (film && PROCESS.films) {
+    const tabs = $('#filmTabs');
+    const show = i => {
+      const f = PROCESS.films[i];
+      film.poster = f.poster;
+      if (!film.src.endsWith(f.video)) { film.src = f.video; film.load(); }
+      film.play().catch(() => {});
+      $('#filmEyebrow').textContent = f.eyebrow;
+      $('#filmTitle').textContent = f.title;
+      $('#filmText').textContent = f.text;
+      $('#filmTags').innerHTML = f.tags.map(t => `<li>${t}</li>`).join('');
+      $('#filmLink').href = `project.html?id=${f.id}`;
+      $$('button', tabs).forEach((b, k) => b.classList.toggle('is-active', k === i));
+    };
+    tabs.innerHTML = PROCESS.films.map((f, i) => `<button class="chip glass${i === 0 ? ' is-active' : ''}" type="button">${f.tab}</button>`).join('');
+    $$('button', tabs).forEach((b, i) => b.addEventListener('click', e => { e.stopPropagation(); show(i); }));
+    show(0);
     new IntersectionObserver(es => es[0].isIntersecting ? film.play().catch(() => {}) : film.pause(), { rootMargin: '150px' }).observe(film);
     film.addEventListener('timeupdate', () => { $('#filmProg').style.width = (film.currentTime / film.duration * 100 || 0) + '%'; });
-    $('#filmFs').addEventListener('click', () => { (film.requestFullscreen || film.webkitEnterFullscreen || (() => {})).call(film); });
+    $('#filmFs').addEventListener('click', e => { e.stopPropagation(); (film.requestFullscreen || film.webkitEnterFullscreen || (() => {})).call(film); });
     $('#filmCard').addEventListener('click', e => { if (e.target.closest('button')) return; film.paused ? film.play() : film.pause(); });
   }
 }
